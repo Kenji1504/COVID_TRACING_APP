@@ -9,7 +9,15 @@ class GUI:
         self.__main_window = Tk()
         TITLE = Label(self.__main_window, text="COVID-19 Contact Tracing App", font= ('Arial Narrow', 20))
         TITLE.pack()
+        
+        self.__entries = []
+def user_entry(master: Tk, user_name):
+    entry_label = Label(master, text=user_name)
+    entry = Entry(master)
+    entry_label.grid(row=master.grid_size()[0], column=0)
+    entry.grid(row=master.grid_size()[0], column=1)
 
+    return entry
         # Ask for user's name
         # Ask for user's age
         # Ask for user's address
