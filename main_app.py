@@ -27,12 +27,14 @@ class GUI:
         address = user_entry(self.__frame, 'Address: ')
         self.__entries.append(address)
         # Ask for user's email address
+        email_address = user_entry(self.__frame, 'Email: ')
+        self.__entries.append(email_address)
         # Ask for user's vaccination status
         
         self.__main_window.mainloop()
         
 def user_entry(master, user_name):
-    entry_label = Label(master, text=user_name, font= ('Arial Narrow', 16))
+    entry_label = Label(master, text=user_name, font= ('Arial Narrow', 12))
     entry = Entry(master, width = 40)
     entry_label.grid(row=master.grid_size()[1], column=0)
     entry.grid(row=master.grid_size()[1] - 1, column=1)
