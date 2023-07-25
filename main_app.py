@@ -21,6 +21,8 @@ class GUI:
         name = user_entry(self.__frame, 'Name: ')
         self.__entries.append(name)
         # Ask for user's age
+        age = user_entry(self.__frame, 'Age: ')
+        self.__entries.append(age)
         # Ask for user's address
         # Ask for user's email address
         # Ask for user's vaccination status
