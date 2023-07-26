@@ -24,7 +24,10 @@ class GUI:
         name = user_entry(self.__frame, 'Name: ')
         self.__entries.append(name)
         # Ask for user's age
-        age = user_entry(self.__frame, 'Age: ')
+        age_label = Label(self.__frame, text="Age: ", font= ('OCR A Extended', 12))
+        age_label.grid(row=self.__frame.grid_size()[1], column=0, pady=10)
+        age = ttk.Spinbox(self.__frame, from_=1, to=115, width=37)
+        age.grid(row=self.__frame.grid_size()[1] - 1, column=1, pady=10)
         self.__entries.append(age)
         # Ask for user's address
         address = user_entry(self.__frame, 'Address: ')
@@ -69,8 +72,8 @@ class GUI:
 def user_entry(master, user_name):
     entry_label = Label(master, text=user_name, font= ('OCR A Extended', 12))
     entry = Entry(master, width = 40)
-    entry_label.grid(row=master.grid_size()[1], column=0)
-    entry.grid(row=master.grid_size()[1] - 1, column=1)
+    entry_label.grid(row=master.grid_size()[1], column=0, pady=10)
+    entry.grid(row=master.grid_size()[1] - 1, column=1, pady=10)
 
     return entry
 
