@@ -35,9 +35,9 @@ class SearchInterface:
                 if entry in contact_info:
                     valid_contacts.append(contact)
 
-                if len(valid_contacts) == 0:
-                    messagebox.showinfo("Search Results", "No Results Found.")
-                    return
+            if len(valid_contacts) == 0:
+                messagebox.showinfo("Search Results", "No Results Found.")
+                return
         from output_window import OutputWindow
         OutputWindow(self.__new_window, valid_contacts)
 
