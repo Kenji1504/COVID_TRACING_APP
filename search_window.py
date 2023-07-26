@@ -16,4 +16,7 @@ class SearchInterface:
         window_label.pack()
         self.__search_entry = Entry(self.__new_frame)
         self.__search_entry.pack()
+
+        search_button = Button(self.__new_frame, text="Search", font=('Franklin Gothic Heavy', 12), width= 10)
+        search_button.pack(padx=10, pady=10)
     
