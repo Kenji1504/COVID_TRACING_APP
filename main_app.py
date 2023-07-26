@@ -40,7 +40,10 @@ class GUI:
         # Make an add button 
         add_button = Button(self.__frame, text="Add Entry", font= ('Franklin Gothic Heavy', 12), width= 20, command=self.__add_entry)
         add_button.grid(row=self.__frame.grid_size()[1], column=0, columnspan=2, pady=10)
-        
+
+        # Make a Search Button
+        search_button = Button(self.__frame, text="Search Entry", font=('Franklin Gothic Heavy', 12), width= 50)
+        search_button.grid(row=self.__frame.grid_size()[1], column=0, columnspan=2, pady=20)
         
         self.__main_window.mainloop()
     # Append the entered values
