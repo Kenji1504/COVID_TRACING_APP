@@ -17,6 +17,11 @@ class SearchInterface:
         self.__search_entry = Entry(self.__new_frame)
         self.__search_entry.pack()
 
-        search_button = Button(self.__new_frame, text="Search", font=('Franklin Gothic Heavy', 12), width= 10)
+        search_button = Button(self.__new_frame, text="Search", font=('Franklin Gothic Heavy', 12), width= 10, command=self.__search_entry_by_category)
         search_button.pack(padx=10, pady=10)
+
+    def __search_entry_by_category(self):
+        with open("log_file.txt", "r") as contacts_file:
+            contacts = contacts_file.readlines()
+            print(contacts)
     
