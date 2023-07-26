@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import messagebox
 # Create a UI class that searches for user's inputted info:
 class SearchInterface:
     def __init__(self, parent):
@@ -29,10 +30,16 @@ class SearchInterface:
             valid_contacts = []
             for contact in contacts:
                 contact_info = contact.split(";")
-                # Print the retrieved info
-                print(contact_info)
                 entry = self.__search_entry.get()
-                # Print the entry
-                print(entry)
+                # If entry is in contact_info, add it to valid_contacts
+                if entry in contact_info:
+                    valid_contacts.append(contact)
+
+                if len(valid_contacts) == 0:
+                    messagebox.showinfo("Search Results", "No Results Found.")
+                    return
+        from output_window import OutputWindow
+        OutputWindow(self.__new_window, valid_contacts)
+
 
     
