@@ -4,6 +4,8 @@
 
 from tkinter import *
 from tkinter import ttk
+from search_window import SearchInterface
+
 # Create a UI class that asks for user's contact info
 class GUI:
     def __init__(self):
@@ -42,7 +44,7 @@ class GUI:
         add_button.grid(row=self.__frame.grid_size()[1], column=0, columnspan=2, pady=10)
 
         # Make a Search Button
-        search_button = Button(self.__frame, text="Search Entry", font=('Franklin Gothic Heavy', 12), width= 50)
+        search_button = Button(self.__frame, text="Search Entry", font=('Franklin Gothic Heavy', 12), width= 50, command=lambda:show_search_window(self.__main_window))
         search_button.grid(row=self.__frame.grid_size()[1], column=0, columnspan=2, pady=20)
         
         self.__main_window.mainloop()
@@ -61,6 +63,9 @@ class GUI:
         with open("log_file.txt", "a") as contacts_file:
             contacts_file.write(f"{contact_to_save}\n")
 
+    
+
+
 def user_entry(master, user_name):
     entry_label = Label(master, text=user_name, font= ('OCR A Extended', 12))
     entry = Entry(master, width = 40)
@@ -68,6 +73,7 @@ def user_entry(master, user_name):
     entry.grid(row=master.grid_size()[1] - 1, column=1)
 
     return entry
-        
-# Create a UI class that searches for user's inputted info
+
+def show_search_window(parent):
+    parent = SearchInterface(parent)
 GUI()
