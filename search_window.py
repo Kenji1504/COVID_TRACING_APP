@@ -5,7 +5,7 @@ class SearchInterface:
     def __init__(self, parent):
         self.__parent = parent
         self.__new_window = Toplevel(self.__parent)
-        self.__new_frame = Frame(self.__new_window, padx=10, pady=10)
+        self.__new_frame = Frame(self.__new_window,bg='black', padx=10, pady=10)
         self.__new_frame.pack()
         self.__search_window()
         
@@ -13,13 +13,13 @@ class SearchInterface:
 
     def __search_window(self):
         # Create another window for search entry
-        window_label = Label(self.__new_frame, text="Search the info that you want to acquire.", font=('OCR A Extended', 9))
+        window_label = Label(self.__new_frame, text="Search the info that you want to acquire.", font=('OCR A Extended', 9), foreground='white', bg='black')
         window_label.pack()
         self.__search_entry = Entry(self.__new_frame)
         self.__search_entry.pack()
 
         # Create a search button
-        search_button = Button(self.__new_frame, text="Search", font=('Franklin Gothic Heavy', 12), width= 10, command=self.__search_entry_by_category)
+        search_button = Button(self.__new_frame, text="Search", font=('Franklin Gothic Heavy', 12), foreground='white', bg='black', width= 10, command=self.__search_entry_by_category)
         search_button.pack(padx=10, pady=10)
 
     def __search_entry_by_category(self):
@@ -40,6 +40,3 @@ class SearchInterface:
                 return
         from output_window import OutputWindow
         OutputWindow(self.__new_window, valid_contacts)
-
-
-    
