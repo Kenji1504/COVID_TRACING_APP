@@ -5,7 +5,7 @@
 from tkinter import *
 from tkinter import ttk
 from search_window import SearchInterface
-
+from tkinter import messagebox
 # Create a UI class that asks for user's contact info
 class GUI:
     def __init__(self):
@@ -42,6 +42,8 @@ class GUI:
         vaccination_status.grid(row=self.__frame.grid_size()[1] - 1, column=1, pady=10)
         self.__entries.append(vaccination_status)
 
+
+
         # Make an add button 
         add_button = Button(self.__frame, text="Add Entry", font= ('Franklin Gothic Heavy', 12), width= 20, command=self.__add_entry)
         add_button.grid(row=self.__frame.grid_size()[1], column=0, columnspan=2, pady=10)
@@ -54,20 +56,24 @@ class GUI:
     # Append the entered values
     def __add_entry(self):
 
+        lacking_input = False
         entry_values = []
         for entry in self.__entries:
             entry_value = entry.get()
             entry_values.append(entry_value)
 
+            # Pop up an error message if requirements are not met
+            if len(entry_value) == 0:
+                messagebox.showerror(title='Error', message="Be sure to input the following requiremnts first.")
+                lacking_input = True
+                break
+        for entry in self.__entries:
             entry.delete(0, END)
-
-        contact_to_save = ";".join(entry_values)
-
-        with open("log_file.txt", "a") as contacts_file:
-            contacts_file.write(f"{contact_to_save}\n")
-
     
-
+        contact_to_save = ";".join(entry_values)
+        if not lacking_input:
+            with open("log_file.txt", "a") as contacts_file:
+                contacts_file.write(f"{contact_to_save}\n")
 
 def user_entry(master, user_name):
     entry_label = Label(master, text=user_name, font= ('OCR A Extended', 12))
